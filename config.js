@@ -44,14 +44,25 @@ var config = {
 		},
 		{
 			module: "calendar",
-			header: "US Holidays",
+			header: "Upcoming",
 			position: "top_left",
 			config: {
 				calendars: [
 					{
 						symbol: "calendar-check",
-						maximumNumberOfDays: "7",
-						url: "webcal://www.calendarlabs.com/ical-calendar/ics/76/US_Holidays.ics"					}
+						maximumNumberOfDays: "30",
+						url: "webcal://www.calendarlabs.com/ical-calendar/ics/76/US_Holidays.ics"
+					},
+					{
+						symbol: "calendar-check",
+						maximumNumberOfDays: "14",
+						url: "https://calendar.google.com/calendar/ical/levi%40levibrooks.com/private-c452c7fe18c59716776121dd2fb78a18/basic.ics"
+					},
+					{
+						symbol: "calendar-check",
+						maximumNumberOfDays: "14",
+						url: "https://calendar.google.com/calendar/ical/athensrealestateacademy%40gmail.com/private-5f8f9c1b2e97bd2cd95b4c13b4e50725/basic.ics"
+					}
 				]
 			}
 		},
