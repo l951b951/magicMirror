@@ -1,6 +1,6 @@
 import subprocess
 
-subprocess.call(['~/bin/./levistartmm'])
+subprocess.call(['./levistartmm'])
 
 
 
