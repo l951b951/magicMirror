@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cd ~/MagicMirror
+ps aux | grep node | grep -v "color"  | awk '{print $2}' | xargs sudo kill -9
