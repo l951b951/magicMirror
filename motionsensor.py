@@ -12,6 +12,8 @@ GPIO.setup(pir_sensor, GPIO.IN)
 
 current_state = 0
 
+#subprocess.run(['/home/pi/MagicMirror/levistopmm'])
+
 try:
     while True:
         time.sleep(0.1)
@@ -22,7 +24,7 @@ try:
             #print ('countdown')
             t.start()
             print ('now running mm')
-            subprocess.run(['./levistartmm'])
+            subprocess.run(['/home/pi/MagicMirror/levistartmm'])
 
 except KeyboardInterrupt:
     pass
