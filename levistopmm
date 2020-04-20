@@ -3,3 +3,5 @@
 cd ~/MagicMirror
 ps aux | grep node | grep -v "color"  | awk '{print $2}' | xargs sudo kill -9
 echo 'now you are dead'
+echo 'trying to launch feh'
+~/MagicMirror/imageviewer.sh

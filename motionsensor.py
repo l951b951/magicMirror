@@ -5,11 +5,8 @@ import os
 import threading
 
 pir_sensor = 11
-piezo = 7
 
 GPIO.setmode(GPIO.BOARD)
-
-#GPIO.setup(piezo,GPIO.OUT)
 
 GPIO.setup(pir_sensor, GPIO.IN)
 
@@ -21,13 +18,12 @@ try:
         current_state = GPIO.input(pir_sensor)
         if current_state == 1:
             print("GPIO pin %s is %s" % (pir_sensor, current_state))
-            #subprocess.run(['./levistartmm'])
-            print ('I live')
             t = threading.Timer(30.0, subprocess.call, [['./levistopmm']])
-            print ('countdown')
+            #print ('countdown')
             t.start()
             print ('now running mm')
             subprocess.run(['./levistartmm'])
+
 except KeyboardInterrupt:
     pass
 finally:
