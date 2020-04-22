@@ -1,7 +1,10 @@
 #!/bin/bash
 
-cd ~/MagicMirror
-ps aux | grep node | grep -v "color"  | awk '{print $2}' | xargs sudo kill -9
+# cd /home/pi/MagicMirror
+#ps aux | grep node | grep -v "color"  | awk '{print $2}' | xargs sudo kill -9
+export DISPLAY=:0
+export XAUTHORITY=/home/pi/.Xauthority
+xdotool key ctrl+q
 echo 'now you are dead'
 echo 'trying to launch feh'
 /home/pi/MagicMirror/imageviewer.sh
