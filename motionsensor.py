@@ -12,18 +12,13 @@ GPIO.setup(pir_sensor, GPIO.IN)
 
 current_state = 0
 
-print ('launching')
-
 try:
     while True:
         time.sleep(0.1)
         current_state = GPIO.input(pir_sensor)
         if current_state == 1:
-            print("GPIO pin %s is %s" % (pir_sensor, current_state))
             t = threading.Timer(30.0, subprocess.call, [['/home/pi/MagicMirror/levistopmm']])
-            #print ('countdown')
             t.start()
-            print ('now running mm')
             subprocess.run(['/home/pi/MagicMirror/levistartmm'])
 
 except KeyboardInterrupt:
