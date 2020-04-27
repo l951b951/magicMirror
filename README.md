@@ -31,12 +31,12 @@
        - There are a million How-to's on setting up a Raspberry Pi.  Save yourself a ton of trouble and buy a quality MicroSD card as well as the official Pi Power Adapter.  I swear by the CanaKits that you can easily find on Amazon.
      - Wiring
        - M to M Jumper from positive rail (red) to some column on the breadboard.  
-       - Connect black wire from PIR to this positive column.
+       - Connect red wire from PIR to this positive column.
        - M to M jumper from ground rail (black) to some column on the breadboard.
-       - Connect the red wire from the PIR to this positive column.
+       - Connect the black wire from the PIR to this ground column.
        - Connect the signal wire (yellow) from the PIR to the bottom of a column on the breadboard.
        - Put the Resistor between the signal wire and the transmission wire.
-       - M to F Jumper on the same column as the signal wire.  this is the transmission wire.  The female end goes to GPIO pin 11.  **If you are using my code directly, you must connect transmission wire to GPIO pin 11.**
+       - M to F Jumper on the same column as the signal wire.  This is the transmission wire.  The female end goes to GPIO pin 11.  **If you are using my code directly, you must connect transmission wire to GPIO pin 11.**
        - M to F Jumper from GPIO Pin 4 to positive rail of breadboard.  You can use any of the pins that provide 5v of power, 4 is just the one I arbitrarily used.
        - M to F Jumper from GPIO Pin 34 to ground rail of breadboard.  You can use any of the ground pins, I just arbitrarily used pin 34.
      - Adjustments
