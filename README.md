@@ -46,11 +46,11 @@
    - Raspbian OS
      - Follow any guide that you want to etch your boot disk for the Pi.  Make sure you select Raspbian with GUI.  **The GUI is X and it is required for the MagicMirror package to run.** The image viewer, feh, and the scripts will work from the command line, but the MagicMirror requires X and will not run from the command line interface.  Additionally, some of the code required absolute references (where I put the complete file path) as opposed to relative references.  Because of this, all my file paths are expecting the username to be "pi", the default username created with a fresh Raspbian install.  If you are using a different username, the paths will need to be changed.
    - feh
-     - feh is the image viewing software.  Install with the following code `sudo apt-get install feh`.
+     - feh is the image viewing software.  Install in terminal with the following code `sudo apt-get install feh`.
    - Pictures
      - Put some pictures (jpg and png preferred) into your /home/pi/Pictures/ folder.  No special characters in the filenames, but other than that limitation the file names can be anything.  
    - npm
-     - npm is the framework that the Magic Mirror software works off of.  Install it with the following commands in order:
+     - npm is the framework that the Magic Mirror software works off of.  Install it with the following commands in a terminal in order:
      ```
      curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
      sudo apt install -y nodejs
@@ -62,9 +62,44 @@
      - Now you have cloned the repository that contains the pre-written MagicMirror code, installed npm and started it.
    - xdotool
      - xdotool is the keystroke emulator needed for ending both the MagicMirror and feh programs.  It was much cleaner to use a keystroke emulator than to kill the process from the command line.
-     - install with the following `sudo apt-get install xdotool`
+     - install in terminal with the following `sudo apt-get install xdotool`
      
-     
+## 3. Files
+   - Config.js
+     - This file configures the MagicMirror.  It needs to be copied to /home/pi/MagicMirror/config/ .  It has been edited to show my calendar, show weather for my location (Athens, GA), and display the clock in a 12 hour format instead of a 24 hour format.  By default, MagicMirror installs a config.sample file into this folder and it can show you the options to change the variables.  Additionally, components can be taken out, but I liked all of them so I left them in.
+   - levistartmm
+     - This is a bash script that 
+       - 1 Hits the Escape key to kill feh if it is running.
+       - 2 Starts npm and MagicMirror
+     - Copy into /home/pi/MagicMirror/       
+   - levistopmm
+     - This is a bash script that
+       - 1 Presses ctrl+q to kill magic mirror if it is running.
+       - 2 Starts imageviewer.sh which is my script to start the feh imageviewer.
+     - Copy into /home/pi/MagicMirror/ 
+   - imageviewer.sh
+     - This is a bash script that does one thing
+       - Launches feh, and tells it to look in /home/pi/Pictures/ for images.  It sets variables to not reset, and to change pictures every 5 seconds.
+     - Copy into /home/pi/MagicMirror/
+   - motionsensor.py
+     - This is a python script that creates an infinite loop. In the loop (that runs every tenth of a second) the Pi looks for a signal from the PIR.  When it senses motion, it starts a timer counting down for 30 seconds at which point it will run levistopmm.  This was required because once MM was running, the timer wouldn't initialize, so I initialized it first.  Once the countdown has begun, the script calls levistartmm, which launches the MagicMirror.  After 30 seconds, levistopmm is launched which kills the MagicMirror and then starts the imageviewer.sh script.
+   - crontab
+     - In terminal run the command `crontab -e` once that opens, enter the following in the body:   
+       ```
+       59 0 * * * export DISPLAY=:0
+       59 0 * * * export XAUTHORITY=/home/pi/.Xauthority
+       59 0 * * * pkill - f /home/pi/MagicMirror/motionsensor.py
+       59 0 * * * xdotool Key Escape
+       59 0 * * * xdotool Key ctrl+q
+       0 1 * * * python3 /home/pi/MagicMirror/Motionsensor.py
+       ```
+     - This text creates 6 triggers.  
+       - The first 2 give it authority to run the xdotool key presses.  The next 3 make sure everything is dead: at 12:59 AM it will
+         - 1. Kill motionsensor.py
+         - 2. Simulate an Escape keypress in case feh is running.
+         - 3. Simulate a ctrl+q keypress in case MagicMirror is running.
+       - The last one starts the Motionsensor.py command, which sits dormant until it detects motion, then the cycle begins again.
+       
      
      
      
