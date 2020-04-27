@@ -5,6 +5,7 @@
 ###### Spring 2020
 
 ###### This project uses a Raspberry Pi, a PIR Motion Sensor, and an HDMI monitor to create a Magic Mirror.  The Magic Mirror shows Date, Time, Personalized Calendar, Localized Weather, and a Pep Talk.  The Magic Mirror displays for 30 seconds when motion is detected, then the device shows a slideshow of locally stored images until the next time motion is detected (when it displays the mirror for 30 seconds).  
+##### Contact Information: jb08018@georgiasouthern.edu
 ##### This README is divided into 3 parts: Hardware, Dependencies, Files.
 
 ## 1. Hardware
