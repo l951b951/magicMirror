@@ -98,7 +98,8 @@
          - 1. Kill motionsensor.py
          - 2. Simulate an Escape keypress in case feh is running.
          - 3. Simulate a ctrl+q keypress in case MagicMirror is running.
-       - The last one starts the Motionsensor.py command, which sits dormant until it detects motion, then the cycle begins again.
+       - The last one starts the Motionsensor.py command at 1AM, which sits dormant until it detects motion, then the cycle begins again.
+         - I wanted the program to run on bootup, but since it required X to be fully loaded, I couldn't find a way to do that.  It would either prematurely run the script (failing) or it would never run the script.  So the next best thing I could do is to have it auto clean up and autostart every morning at 1AM.
        
      
      
