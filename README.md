@@ -16,7 +16,7 @@
      - USB Keyboard and Mouse for Setup and installation
        - The easiest way to set up your MagicMirror is directly connecting to the Pi.  However, SSH can be used for most of the installation if you want to use a remote computer to do it.  I also used VNC Server/viewer to remote into the desktop of the Pi for portions of this project.
      - PIR motion sensor.
-       - You can find this on Amazon or e-Bay by searching for PIR Motion Sensor.
+       - You can find this on Amazon or e-Bay by searching for PIR Motion Sensor. 
      - Breadboard
        - You can find one of these on Amazon or e-Bay by searching for Solderless Breadboard.
      - Three (3) Male to Female jumper cables
